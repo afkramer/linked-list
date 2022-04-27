@@ -45,17 +45,23 @@ class LinkedList
     curr = curr.next_node until curr.next_node.nil?
     curr
   end
+
+  def at(index)
+    return @head if index.zero?
+
+    curr = @head
+    (index).times do
+      curr = curr.next_node
+    end
+    curr
+  end
 end
 
 ll = LinkedList.new
 ll.append('Norma')
 ll.append('Sandy')
 ll.prepend('Daisy')
-ll.size
-puts ll.head
-ll.tail
-ll2 = LinkedList.new
-ll2.tail
+ll.at(0)
 
 
 #at(index) returns the node at the given index
