@@ -22,14 +22,27 @@ class LinkedList
     @head = Node.new(value)
     @head.next_node = temp
   end
+
+  def size
+    size = 0
+    return size if @head.nil?
+
+    size += 1
+    curr = @head
+    until curr.next_node.nil?
+      curr = curr.next_node
+      size += 1
+    end
+    size
+  end
 end
 
 ll = LinkedList.new
 ll.append('Norma')
 ll.append('Sandy')
 ll.prepend('Daisy')
+ll.size
 
-#size returns the total number of nodes in the list
 #head returns the first node in the list
 #tail returns the last node in the list
 #at(index) returns the node at the given index
