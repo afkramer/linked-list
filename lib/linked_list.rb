@@ -50,10 +50,22 @@ class LinkedList
     return @head if index.zero?
 
     curr = @head
-    (index).times do
+    index.times do
       curr = curr.next_node
     end
     curr
+  end
+
+  def pop
+    return if @head.nil?
+
+    prev = nil
+    curr = @head
+    until curr.next_node.nil?
+      prev = curr
+      curr = curr.next_node
+    end
+    prev.next_node = nil
   end
 end
 
@@ -61,10 +73,11 @@ ll = LinkedList.new
 ll.append('Norma')
 ll.append('Sandy')
 ll.prepend('Daisy')
-ll.at(0)
+ll.prepend('Penny')
+ll.tail
+ll.pop
+ll.tail
 
-
-#at(index) returns the node at the given index
 #pop removes the last element from the list
 #contains?(value) returns true if the passed in value is in the list and otherwise returns false.
 #find(value) returns the index of the node containing value, or nil if not found.
