@@ -67,6 +67,18 @@ class LinkedList
     end
     prev.next_node = nil
   end
+
+  def contains?(value)
+    return false if @head.nil?
+
+    curr = @head
+    until curr.next_node.nil?
+      return true if curr.value == value
+
+      curr = curr.next_node
+    end
+    false
+  end
 end
 
 ll = LinkedList.new
@@ -74,11 +86,9 @@ ll.append('Norma')
 ll.append('Sandy')
 ll.prepend('Daisy')
 ll.prepend('Penny')
-ll.tail
-ll.pop
-ll.tail
+ll.contains?('Norma')
+ll.contains?('Spooky')
 
-#pop removes the last element from the list
 #contains?(value) returns true if the passed in value is in the list and otherwise returns false.
 #find(value) returns the index of the node containing value, or nil if not found.
 #to_s represent your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> nil
