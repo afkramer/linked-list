@@ -37,6 +37,14 @@ class LinkedList
     end
     size
   end
+
+  def tail
+    return nil if @head.nil?
+
+    curr = @head
+    curr = curr.next_node until curr.next_node.nil?
+    curr
+  end
 end
 
 ll = LinkedList.new
@@ -44,8 +52,12 @@ ll.append('Norma')
 ll.append('Sandy')
 ll.prepend('Daisy')
 ll.size
+puts ll.head
+ll.tail
+ll2 = LinkedList.new
+ll2.tail
 
-#tail returns the last node in the list
+
 #at(index) returns the node at the given index
 #pop removes the last element from the list
 #contains?(value) returns true if the passed in value is in the list and otherwise returns false.
