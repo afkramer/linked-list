@@ -1,6 +1,8 @@
 require_relative './node'
 
 class LinkedList
+  attr_reader :head
+  
   def initialize
     @head = nil
   end
@@ -43,7 +45,6 @@ ll.append('Sandy')
 ll.prepend('Daisy')
 ll.size
 
-#head returns the first node in the list
 #tail returns the last node in the list
 #at(index) returns the node at the given index
 #pop removes the last element from the list
