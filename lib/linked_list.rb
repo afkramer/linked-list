@@ -93,6 +93,20 @@ class LinkedList
     end
     nil
   end
+
+  def to_s
+    #( value ) -> ( value ) -> ( value ) -> nil
+    return 'nil' if @head.nil?
+
+    string = ''
+    curr = @head
+    until curr.next_node.nil?
+      string += "( #{curr.value} ) -> "
+      curr = curr.next_node
+    end
+    string += "( #{curr.value} ) -> nil"
+    string
+  end
 end
 
 ll = LinkedList.new
@@ -100,12 +114,7 @@ ll.append('Norma')
 ll.append('Sandy')
 ll.prepend('Daisy')
 ll.prepend('Penny')
-ll.find('Norma')
-ll.find('Spooky')
-
-#find(value) returns the index of the node containing value, or nil if not found.
-#to_s represent your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> nil
-
+ll.to_s
 
 #Extra Credit
 #insert_at(value, index) that inserts a new node with the provided value at the given index.
