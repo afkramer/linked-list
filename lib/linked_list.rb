@@ -2,7 +2,7 @@ require_relative './node'
 
 class LinkedList
   attr_reader :head
-  
+
   def initialize
     @head = nil
   end
@@ -79,6 +79,20 @@ class LinkedList
     end
     false
   end
+
+  def find(value)
+    return nil if @head.nil?
+
+    curr = @head
+    index = 0
+    until curr.next_node.nil?
+      return index if curr.value == value
+
+      curr = curr.next_node
+      index += 1
+    end
+    nil
+  end
 end
 
 ll = LinkedList.new
@@ -86,10 +100,9 @@ ll.append('Norma')
 ll.append('Sandy')
 ll.prepend('Daisy')
 ll.prepend('Penny')
-ll.contains?('Norma')
-ll.contains?('Spooky')
+ll.find('Norma')
+ll.find('Spooky')
 
-#contains?(value) returns true if the passed in value is in the list and otherwise returns false.
 #find(value) returns the index of the node containing value, or nil if not found.
 #to_s represent your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> nil
 
