@@ -12,19 +12,23 @@ class LinkedList
     else
       # traverse the list until you reach the element that points to  nil
       curr = @head
-      until curr.next_node.nil?
-        curr = curr.next_node
-      end
+      curr = curr.next_node until curr.next_node.nil?
       curr.next_node = new_node
     end
+  end
+
+  def prepend(value)
+    temp = @head
+    @head = Node.new(value)
+    @head.next_node = temp
   end
 end
 
 ll = LinkedList.new
 ll.append('Norma')
 ll.append('Sandy')
+ll.prepend('Daisy')
 
-#prepend(value) adds a new node containing value to the start of the list
 #size returns the total number of nodes in the list
 #head returns the first node in the list
 #tail returns the last node in the list
