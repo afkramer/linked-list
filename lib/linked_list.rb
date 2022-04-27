@@ -1,11 +1,28 @@
+require_relative './node'
+
 class LinkedList
   def initialize
     @head = nil
-    @tail = nil
+  end
+
+  def append(value)
+    new_node = Node.new(value)
+    if @head.nil?
+      @head = new_node
+    else
+      # traverse the list until you reach the element that points to  nil
+      curr = @head
+      until curr.next_node.nil?
+        curr = curr.next_node
+      end
+      curr.next_node = new_node
+    end
   end
 end
-#append(value) adds a new node containing value to the end of the list
 
+ll = LinkedList.new
+ll.append('Norma')
+ll.append('Sandy')
 
 #prepend(value) adds a new node containing value to the start of the list
 #size returns the total number of nodes in the list
