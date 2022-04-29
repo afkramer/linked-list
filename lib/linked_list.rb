@@ -107,14 +107,34 @@ class LinkedList
     string += "( #{curr.value} ) -> nil"
     string
   end
+
+  def insert_at(value, index)
+    return if index > size - 1
+
+    node = Node.new(value)
+
+    before = nil
+    after = @head
+    index.times do
+      before = after
+      after = after.next_node
+    end
+
+    before.nil? ? @head = node : before.next_node = node
+    node.next_node = after
+  end
 end
 
 ll = LinkedList.new
 ll.append('Norma')
 ll.append('Sandy')
+ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
-ll.to_s
+ll.insert_at('Spooky1', 0)
+ll.insert_at('Spooky2', 6)
+ll.insert_at('Spooky3', 4)
+puts ll.to_s
 
 #Extra Credit
 #insert_at(value, index) that inserts a new node with the provided value at the given index.
