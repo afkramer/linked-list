@@ -123,6 +123,22 @@ class LinkedList
     before.nil? ? @head = node : before.next_node = node
     node.next_node = after
   end
+
+  def remove_at(index)
+    return if index > size - 1
+
+    before = nil
+    curr = @head
+    index.times do
+      before = curr
+      curr = curr.next_node
+    end
+    if before.nil?
+      @head = curr.next_node
+    else
+      before.next_node = curr.next_node
+    end
+  end
 end
 
 ll = LinkedList.new
@@ -131,12 +147,11 @@ ll.append('Sandy')
 ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
-ll.insert_at('Spooky1', 0)
-ll.insert_at('Spooky2', 6)
 ll.insert_at('Spooky3', 4)
+ll.remove_at(4)
+ll.remove_at(0)
 puts ll.to_s
 
 #Extra Credit
-#insert_at(value, index) that inserts a new node with the provided value at the given index.
 #remove_at(index) that removes the node at the given index.
 #Extra Credit Tip: When you insert or remove a node, consider how it will affect the existing nodes. Some of the nodes will need their #next_node link updated.
