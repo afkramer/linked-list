@@ -18,11 +18,13 @@ class LinkedList
   def step(index)
     return nil if @head.nil? || index > size - 1
 
+    prev = nil
     curr = @head
     index.times do
+      prev = curr
       curr = curr.next_node
     end
-    curr
+    { prev: prev, curr: curr }
   end
 
   def append(value)
@@ -150,8 +152,9 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
-ll.at(3)
-ll.at(8)
 
-ll2 = LinkedList.new
-ll2.at(1)
+#ll.at(3)
+#ll.at(8)
+
+#ll2 = LinkedList.new
+#ll2.at(1)
