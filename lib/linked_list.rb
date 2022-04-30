@@ -45,14 +45,7 @@ class LinkedList
 
   def size
     size = 0
-    return size if @head.nil?
-
-    size += 1
-    curr = @head
-    until curr.next_node.nil?
-      curr = curr.next_node
-      size += 1
-    end
+    traverse { size += 1}
     size
   end
 
@@ -146,5 +139,4 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
-ll.remove_at(4)
-puts ll.to_s
+ll.size
