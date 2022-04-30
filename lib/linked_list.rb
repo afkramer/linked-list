@@ -16,7 +16,7 @@ class LinkedList
   end
 
   def step(index)
-    return nil if @head.nil? || index > size - 1
+    return { prev: nil, curr: nil } if @head.nil? || index > size - 1
 
     prev = nil
     curr = @head
@@ -57,7 +57,7 @@ class LinkedList
   end
 
   def at(index)
-    step(index)
+    step(index)[:curr]
   end
 
   def pop
@@ -153,8 +153,8 @@ ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
 
-#ll.at(3)
-#ll.at(8)
+puts ll.at(3).value
+puts ll.at(8)
 
-#ll2 = LinkedList.new
-#ll2.at(1)
+ll2 = LinkedList.new
+puts ll2.at(1)
