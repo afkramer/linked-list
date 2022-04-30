@@ -7,16 +7,18 @@ class LinkedList
     @head = nil
   end
 
+  def traverse
+    return nil if @head.nil?
+
+    curr = @head
+    curr = curr.next_node until curr.next_node.nil?
+    curr
+  end
+
   def append(value)
     new_node = Node.new(value)
-    if @head.nil?
-      @head = new_node
-    else
-      # traverse the list until you reach the element that points to  nil
-      curr = @head
-      curr = curr.next_node until curr.next_node.nil?
-      curr.next_node = new_node
-    end
+    end_of_list = traverse
+    end_of_list.nil? ? @head = new_node : end_of_list.next_node = new_node
   end
 
   def prepend(value)
@@ -148,10 +150,3 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
-ll.remove_at(4)
-ll.remove_at(0)
-puts ll.to_s
-
-#Extra Credit
-#remove_at(index) that removes the node at the given index.
-#Extra Credit Tip: When you insert or remove a node, consider how it will affect the existing nodes. Some of the nodes will need their #next_node link updated.
