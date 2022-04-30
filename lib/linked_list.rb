@@ -66,16 +66,9 @@ class LinkedList
     node_hash[:prev].next_node = nil
   end
 
-  def _contains?(value)
-    return false if @head.nil?
-
-    curr = @head
-    until curr.next_node.nil?
-      return true if curr.value == value
-
-      curr = curr.next_node
-    end
-    false
+  def contains?(value)
+    find_value = proc { |curr| return true if curr.value == value }
+    traverse(&find_value)
   end
 
   def find(value)
@@ -136,5 +129,4 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
-ll.contains?('Rocky')
-ll.contains?('Sandy')
+
