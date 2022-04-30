@@ -8,15 +8,17 @@ class LinkedList
   end
 
   def traverse
-    return nil if @head.nil?
+    return { prev: nil, curr: nil } if @head.nil?
 
+    prev = nil
     curr = @head
     until curr.next_node.nil?
       yield if block_given?
+      prev = curr
       curr = curr.next_node
     end
     yield if block_given?
-    curr
+    { prev: prev, curr: curr }
   end
 
   def step(index)
