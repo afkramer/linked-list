@@ -18,7 +18,7 @@ class LinkedList
       curr = curr.next_node
     end
     yield(curr) if block_given?
-    { prev: prev, curr: curr }
+    return { prev: prev, curr: curr } unless block_given?
   end
 
   def step(index)
@@ -47,7 +47,7 @@ class LinkedList
 
   def size
     size = 0
-    traverse { size += 1}
+    traverse { size += 1 }
     size
   end
 
@@ -67,6 +67,12 @@ class LinkedList
   end
 
   def contains?(value)
+    in_list = false
+    in_list = traverse { |curr| return true if curr.value == value }
+    in_list
+  end
+
+  def _contains?(value)
     return false if @head.nil?
 
     curr = @head
@@ -136,4 +142,5 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
-ll.size
+ll.contains?('Rocky')
+ll.contains?('Sandy')
