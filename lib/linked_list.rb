@@ -66,12 +66,6 @@ class LinkedList
     node_hash[:prev].next_node = nil
   end
 
-  def contains?(value)
-    in_list = false
-    in_list = traverse { |curr| return true if curr.value == value }
-    in_list
-  end
-
   def _contains?(value)
     return false if @head.nil?
 
