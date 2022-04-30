@@ -123,18 +123,14 @@ class LinkedList
   end
 
   def remove_at(index)
-    return if index > size - 1
+    hash = step(index)
 
-    before = nil
-    curr = @head
-    index.times do
-      before = curr
-      curr = curr.next_node
-    end
-    if before.nil?
-      @head = curr.next_node
+    return nil if hash[:prev].nil? && hash[:curr].nil? && index != 0
+
+    if hash[:prev].nil?
+      @head = hash[:curr].next_node
     else
-      before.next_node = curr.next_node
+      hash[:prev].next_node = hash[:curr].next_node
     end
   end
 end
@@ -146,3 +142,4 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
+ll.remove_at(4)
