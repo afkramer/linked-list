@@ -13,11 +13,11 @@ class LinkedList
     prev = nil
     curr = @head
     until curr.next_node.nil?
-      yield if block_given?
+      yield(curr) if block_given?
       prev = curr
       curr = curr.next_node
     end
-    yield if block_given?
+    yield(curr) if block_given?
     { prev: prev, curr: curr }
   end
 
@@ -136,4 +136,4 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
-ll.pop
+ll.size
