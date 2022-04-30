@@ -11,7 +11,11 @@ class LinkedList
     return nil if @head.nil?
 
     curr = @head
-    curr = curr.next_node until curr.next_node.nil?
+    until curr.next_node.nil?
+      yield if block_given?
+      curr = curr.next_node
+    end
+    yield if block_given?
     curr
   end
 
@@ -143,3 +147,4 @@ ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
 ll.remove_at(4)
+puts ll.to_s
