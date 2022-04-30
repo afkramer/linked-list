@@ -51,9 +51,8 @@ class LinkedList
     size
   end
 
-  # TO TEST
   def tail
-    traverse
+    traverse[:curr]
   end
 
   def at(index)
@@ -61,15 +60,10 @@ class LinkedList
   end
 
   def pop
-    return if @head.nil?
+    node_hash = traverse
+    return nil if node_hash[:curr].nil?
 
-    prev = nil
-    curr = @head
-    until curr.next_node.nil?
-      prev = curr
-      curr = curr.next_node
-    end
-    prev.next_node = nil
+    node_hash[:prev].next_node = nil
   end
 
   def contains?(value)
@@ -142,3 +136,4 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
+ll.pop
