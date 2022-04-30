@@ -35,8 +35,8 @@ class LinkedList
 
   def append(value)
     new_node = Node.new(value)
-    end_of_list = traverse
-    end_of_list.nil? ? @head = new_node : end_of_list.next_node = new_node
+    node_hash = traverse
+    node_hash[:curr].nil? ? @head = new_node : node_hash[:curr].next_node = new_node
   end
 
   def prepend(value)
@@ -51,6 +51,7 @@ class LinkedList
     size
   end
 
+  # TO TEST
   def tail
     traverse
   end
@@ -141,4 +142,3 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
-ll.size
