@@ -82,16 +82,10 @@ class LinkedList
   end
 
   def to_s
-    #( value ) -> ( value ) -> ( value ) -> nil
-    return 'nil' if @head.nil?
+    return nil if @head.nil?
 
     string = ''
-    curr = @head
-    until curr.next_node.nil?
-      string += "( #{curr.value} ) -> "
-      curr = curr.next_node
-    end
-    string += "( #{curr.value} ) -> nil"
+    traverse { |curr| string += "( #{curr.value} ) -> #{'nil' if curr.next_node.nil?}" }
     string
   end
 
@@ -117,13 +111,3 @@ class LinkedList
     end
   end
 end
-
-ll = LinkedList.new
-ll.append('Norma')
-ll.append('Sandy')
-ll.append('Noelle')
-ll.prepend('Daisy')
-ll.prepend('Penny')
-ll.insert_at('Spooky3', 4)
-puts ll.find('Daisy')
-ll.find('Rocky')
