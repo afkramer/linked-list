@@ -15,6 +15,16 @@ class LinkedList
     curr
   end
 
+  def step(index)
+    return nil if @head.nil? || index > size - 1
+
+    curr = @head
+    index.times do
+      curr = curr.next_node
+    end
+    curr
+  end
+
   def append(value)
     new_node = Node.new(value)
     end_of_list = traverse
@@ -45,13 +55,7 @@ class LinkedList
   end
 
   def at(index)
-    return @head if index.zero?
-
-    curr = @head
-    index.times do
-      curr = curr.next_node
-    end
-    curr
+    step(index)
   end
 
   def pop
@@ -146,4 +150,8 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
-ll.tail
+ll.at(3)
+ll.at(8)
+
+ll2 = LinkedList.new
+ll2.at(1)
