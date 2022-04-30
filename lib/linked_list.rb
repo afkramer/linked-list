@@ -72,17 +72,13 @@ class LinkedList
   end
 
   def find(value)
-    return nil if @head.nil?
-
-    curr = @head
     index = 0
-    until curr.next_node.nil?
+    find_index = proc do |curr|
       return index if curr.value == value
 
-      curr = curr.next_node
       index += 1
     end
-    nil
+    traverse(&find_index)
   end
 
   def to_s
@@ -129,4 +125,5 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
-
+puts ll.find('Daisy')
+ll.find('Rocky')
