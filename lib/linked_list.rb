@@ -41,11 +41,7 @@ class LinkedList
   end
 
   def tail
-    return nil if @head.nil?
-
-    curr = @head
-    curr = curr.next_node until curr.next_node.nil?
-    curr
+    traverse
   end
 
   def at(index)
@@ -150,3 +146,4 @@ ll.append('Noelle')
 ll.prepend('Daisy')
 ll.prepend('Penny')
 ll.insert_at('Spooky3', 4)
+ll.tail
